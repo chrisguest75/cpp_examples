@@ -61,3 +61,5 @@ Steps [README.md](./05_game_of_life/README.md)
 https://abseil.io/blog/
 
 https://github.com/boostorg/boost
+
+https://github.com/fffaraz/awesome-cpp

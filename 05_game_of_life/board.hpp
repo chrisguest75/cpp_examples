@@ -17,6 +17,7 @@ class Board {
         int getHeight();
 
         std::vector<std::string> stateString(); 
+        void setState(std::vector<std::string> rows); 
 };
 
 #endif

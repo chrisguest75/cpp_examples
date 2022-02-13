@@ -18,6 +18,8 @@ class Board {
 
         std::vector<std::string> stateString(); 
         void setState(std::vector<std::string> rows); 
+        void applyRules(); 
+
 };
 
 #endif

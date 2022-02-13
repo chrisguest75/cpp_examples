@@ -11,6 +11,10 @@ TODO:
 * webassembly
 * xcode
 * abseil
+* doxygen
+* dockerise builds
+* memoryprofiler
+* github actions
 
 ## VSCode Extensions
 

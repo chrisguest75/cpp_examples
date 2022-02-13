@@ -23,9 +23,9 @@ std::vector<std::string> Board::asString() {
         std::stringstream row;
         for (int x = 0; x < this->width; x++) {
             if (this->board[(y * this->height) + x] == 0) {
-                row << " ";
+                row << "0";
             } else {
-                row << "*";
+                row << "1";
             }
         }
         rows.push_back(row.str());

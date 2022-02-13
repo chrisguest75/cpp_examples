@@ -28,7 +28,9 @@ TEST(BoardTests, print)
   EXPECT_EQ(board.getHeight(), 5) << "The height is not correct";
   EXPECT_EQ(rows.size(), 5) << "Number of rows is not correct";
 
-  
+  for(std::size_t i = 0; i < rows.size(); ++i) {
+      EXPECT_EQ(rows[i], "00000") << "Row is not empty";
+  }
 }
 
 

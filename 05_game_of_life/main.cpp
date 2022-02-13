@@ -9,8 +9,17 @@ int main(int argc, char **argv) {
     } else {
         std::cout << "Game of life:" << std::endl;
 
+        /* 
         std::cout << "argc = " << argc << std::endl;
         argc > 1 ? std::cout << "argv[1] = " << argv[1] : std::cout << "argv = ";
         std::cout << std::endl;
+        */
+
+        Board board(5, 5);
+        std::vector<std::string> rows = board.asString();
+        
+        for(std::size_t i = 0; i < rows.size(); ++i) {
+           std::cout << rows[i] << std::endl;
+        }
    }
 }

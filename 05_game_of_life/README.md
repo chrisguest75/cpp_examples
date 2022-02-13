@@ -35,6 +35,9 @@ nm --extern-only --demangle ./googletest/install/lib/libgtest.a
 make && ./gameoflife tests
 # run program
 make && ./gameoflife
+
+# whilst developing 
+make && ./gameoflife test && ./gameoflife  
 ```
 
 ## Debugging
@@ -45,3 +48,5 @@ Use the debugger in `vscode`
 
 * Getting Started with Google Test on macOS [here](https://alexanderbussan.medium.com/getting-started-with-google-test-on-os-x-a07eee7ae6dc)  
 * Google Test [repo](https://github.com/google/googletest)  
+
+https://riptutorial.com/cplusplus/example/1678/iterating-over-std--vector

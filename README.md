@@ -9,12 +9,25 @@ TODO:
 * boost
 * lint
 * webassembly
+* xcode
+* abseil
 
 ## VSCode Extensions
 
 ```sh
 code --install-extension ms-vscode.cpptools
 code --install-extension ms-vscode.cpptools-extension-pack
+```
+
+```sh
+# list installed packages
+pkgutil --packages | sort     
+# list files for a package.
+pkgutil --files com.apple.pkg.CLTools_SDK_macOS12
+
+# local libs and includes
+ls /usr/local/lib  
+ls /usr/local/include 
 ```
 
 ## Simple Hello World
@@ -35,3 +48,6 @@ Steps [README.md](./02_queue/README.md)
 * https://github.com/stefanpantic/cpp-playground/tree/master/container-classes/Vector
 * https://docs.pocoproject.org/current/index.html
 * https://github.com/Martchus/cpp-utilities
+https://abseil.io/blog/
+
+https://github.com/boostorg/boost

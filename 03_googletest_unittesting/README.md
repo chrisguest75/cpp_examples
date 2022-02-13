@@ -29,6 +29,7 @@ nm --extern-only --demangle ./googletest/install/lib/libgtest.a
 # build the tests
 make && ./sumProgram
 ```
+
 ## Resources
 
 * Getting Started with Google Test on macOS [here](https://alexanderbussan.medium.com/getting-started-with-google-test-on-os-x-a07eee7ae6dc)

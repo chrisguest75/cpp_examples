@@ -33,4 +33,26 @@ TEST(BoardTests, print)
   }
 }
 
+TEST(BoardTests, setState)
+{
+  // ARRANGE
+  Board board(5, 5);
+
+  // ACT 
+  std::vector<std::string> state = { "00000", "00100", "00100", "00100", "00000" };
+  board.setState(state);
+  std::vector<std::string> rows = board.stateString();
+
+  // ASSERT
+  EXPECT_EQ(board.getWidth(), 5) << "The width is not correct";
+  EXPECT_EQ(board.getHeight(), 5) << "The height is not correct";
+  EXPECT_EQ(rows.size(), 5) << "Number of rows is not correct";
+
+  EXPECT_EQ(rows[0], "00000") << "Row has incorrect state";
+  EXPECT_EQ(rows[1], "00100") << "Row has incorrect state";
+  EXPECT_EQ(rows[2], "00100") << "Row has incorrect state";
+  EXPECT_EQ(rows[3], "00100") << "Row has incorrect state";
+  EXPECT_EQ(rows[4], "00000") << "Row has incorrect state";
+
+}
 

@@ -8,6 +8,7 @@ TODO:
 * stl
 * boost
 * lint
+* webassembly
 
 ## VSCode Extensions
 

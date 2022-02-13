@@ -31,7 +31,9 @@ cd ../..
 # look at library exports (objdump as well)
 nm --extern-only --demangle ./googletest/install/lib/libgtest.a
 
-# build the tests
+# build and run the tests
+make && ./gameoflife tests
+# run program
 make && ./gameoflife
 ```
 

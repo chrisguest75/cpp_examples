@@ -45,6 +45,11 @@ Steps [README.md](./02_queue/README.md)
 Demonstrates how to use `googletest`  
 Steps [README.md](./03_googletest_unittesting/README.md)  
 
+## Game of life
+
+Create a game-of-life example.  
+Steps [README.md](./05_game_of_life/README.md)  
+
 ## Resources
 
 * C++ reference [here](https://en.cppreference.com/w/)

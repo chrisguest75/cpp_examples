@@ -1,6 +1,6 @@
 # README
 
-Demonstrates how to create a program that inputs a set of numbers and prints them out.  
+Demonstrates how to use `googletest`  
 
 `vscode` extensions [README.md](../README.md)  
 

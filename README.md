@@ -40,6 +40,11 @@ Steps [README.md](./01_helloworld/README.md)
 Demonstrates how to create a program that inputs a set of numbers and prints them out.  
 Steps [README.md](./02_queue/README.md)  
 
+## Google test
+
+Demonstrates how to use `googletest`  
+Steps [README.md](./03_googletest_unittesting/README.md)  
+
 ## Resources
 
 * C++ reference [here](https://en.cppreference.com/w/)

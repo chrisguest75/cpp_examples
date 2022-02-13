@@ -4,6 +4,11 @@ Create a game-of-life example.
 
 `vscode` extensions [README.md](../README.md)  
 
+TODO:
+
+* Load files
+* Vistor pattern for grid
+
 ## Prereqs
 
 ```sh

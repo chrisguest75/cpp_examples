@@ -42,3 +42,8 @@ std::vector<std::string> Board::stateString() {
 
     return rows;
 }
+
+void Board::applyRules() {
+    int *board = new int[height * width];
+    
+}

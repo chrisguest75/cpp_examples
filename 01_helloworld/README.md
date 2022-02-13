@@ -2,7 +2,7 @@
 
 Demonstrates how to build and single step debug a CPP program  
 
-Extensions [README.md](../README.md)
+`vscode` extensions [README.md](../README.md)  
 
 ## Build and Run
 

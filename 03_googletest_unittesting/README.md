@@ -10,7 +10,7 @@ Demonstrates how to use `googletest`
 brew install cmake
 ```
 
-## Build googletest
+## Build and Run
 
 ```sh
 git clone https://github.com/google/googletest.git 
@@ -18,6 +18,7 @@ cd googletest
 rm -rf .git
 mkdir install 
 cd install 
+cmake ../
 make
 
 cd ../..
@@ -26,26 +27,10 @@ cd ../..
 nm --extern-only --demangle ./googletest/install/lib/libgtest.a
 
 # build the tests
-make
+make && ./sumProgram
 ```
-
-## Build and Run
-
-Select the Terminal > Run Build Task command.
-
-```sh
-clang++ --version
-
-# make from terminal
-make && ./main
-```
-
-## Debugging
-
-Use the debugger in `vscode`  
-
 ## Resources
 
-https://github.com/google/googletest
+* Getting Started with Google Test on macOS [here](https://alexanderbussan.medium.com/getting-started-with-google-test-on-os-x-a07eee7ae6dc)
+* Google Test [repo](https://github.com/google/googletest)
 
-https://alexanderbussan.medium.com/getting-started-with-google-test-on-os-x-a07eee7ae6dc

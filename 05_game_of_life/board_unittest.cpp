@@ -21,7 +21,7 @@ TEST(BoardTests, print)
   Board board(5, 5);
 
   // ACT 
-  std::vector<std::string> rows = board.asString();
+  std::vector<std::string> rows = board.stateString();
 
   // ASSERT
   EXPECT_EQ(board.getWidth(), 5) << "The width is not correct";

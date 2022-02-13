@@ -16,7 +16,7 @@ int Board::getHeight() {
     return this->height;
 }
 
-std::vector<std::string> Board::asString() {
+std::vector<std::string> Board::stateString() {
     std::vector<std::string> rows;
 
     for (int y = 0; y < this->height; y++) {

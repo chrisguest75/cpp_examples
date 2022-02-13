@@ -16,7 +16,7 @@ class Board {
         int getWidth();
         int getHeight();
 
-        std::vector<std::string> asString(); 
+        std::vector<std::string> stateString(); 
 };
 
 #endif

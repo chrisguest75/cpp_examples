@@ -16,7 +16,7 @@ int main(int argc, char **argv) {
         */
 
         Board board(5, 5);
-        std::vector<std::string> rows = board.asString();
+        std::vector<std::string> rows = board.stateString();
         
         for(std::size_t i = 0; i < rows.size(); ++i) {
            std::cout << rows[i] << std::endl;

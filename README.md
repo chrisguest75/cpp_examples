@@ -59,6 +59,11 @@ Steps [README.md](./02_queue/README.md)
 Demonstrates how to use `googletest`  
 Steps [README.md](./03_googletest_unittesting/README.md)  
 
+## 05 - Game of life
+
+Create a game-of-life example.  
+Steps [README.md](./05_game_of_life/README.md)  
+
 ## 06 - NASM Library
 
 Demonstrates how to link an ASM lib with CPP  
@@ -83,6 +88,7 @@ Steps [README.md](./09_devcontainer/README.md)
 
 Demonstrate a quick example using `conan` package manager.  
 Steps [README.md](./10_conan/README.md)  
+
 
 ## Resources
 

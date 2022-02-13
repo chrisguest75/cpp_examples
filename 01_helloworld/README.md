@@ -1,10 +1,21 @@
 # README
+
 Demonstrates how to build and single step debug a CPP program  
 
+Extensions [README.md](../README.md)
+
+## Build and Run
+
+Select the Terminal > Run Build Task command.
+
 ```sh
-code --install-extension ms-vscode.cpptools
+clang --version
 ```
 
+## Debugging
 
-# Resources
-https://code.visualstudio.com/docs/languages/cpp
+Use the debugger in `vscode`  
+
+## Resources
+
+* C/C++ for Visual Studio Code [here](https://code.visualstudio.com/docs/languages/cpp)  

@@ -100,3 +100,6 @@ Steps [README.md](./10_conan/README.md)
 * Martchus/cpp-utilities [here](https://github.com/Martchus/cpp-utilities)
 * stefanpantic/cpp-playground [here](https://github.com/stefanpantic/cpp-playground)
 * https://github.com/stefanpantic/cpp-playground/tree/master/container-classes/Vector
+
+* https://github.com/Martchus/cpp-utilities
+* https://github.com/fffaraz/awesome-cpp

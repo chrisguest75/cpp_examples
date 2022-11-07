@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo "NumTracks,Name,Author,Composer,TimeSecs,TimeFormat,Hardware,Size,File" > ./tracks.csv
+echo "NumTracks,Name,Author,Composer,TimeSecs,TimeFormat,Hardware,Size,File"
 while IFS='' read -r musicfile
 do
     # linux
@@ -12,7 +12,7 @@ do
     if [[ $? -ne 0 ]]; then
         metadata=",,,,,,"
     fi
-    echo "${metadata},${size},${musicfile}" >> ./tracks.csv
+    echo "${metadata},${size},${musicfile}" 
 done < <(find ./music -type f \( -iname "*" -and ! -iname ".DS_Store" \) )
 
 

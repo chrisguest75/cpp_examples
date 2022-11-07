@@ -10,6 +10,7 @@ TODO:
 
 * durations on the tracks not working
 * not all of the files are working in info68 (is it just icepacked?)
+* single step debugging of the info68 app.  
 
 Ref: [76_building_cpp_package](https://github.com/chrisguest75/docker_examples/blob/master/76_building_cpp_package/README.md)  
 

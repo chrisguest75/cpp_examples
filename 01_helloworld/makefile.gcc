@@ -14,4 +14,4 @@ all: helloworld
 	g++ $^ -o $@ $(LDFLAGS)
 
 clean:
-	rm -f helloworld.o helloworld.exe
+	rm -f helloworld.o helloworld

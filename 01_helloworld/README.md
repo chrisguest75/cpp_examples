@@ -46,6 +46,10 @@ docker run -it -v $(pwd):/scratch --entrypoint /bin/bash clangbuilder
 
 cd /scratch
 make -f makefile.clang 
+
+./helloworld
+
+make -f makefile.clang clean
 ```
 
 ### gcc
@@ -57,6 +61,11 @@ docker run -it -v $(pwd):/scratch --entrypoint /bin/bash gccbuilder
 
 cd /scratch
 make -f makefile.gcc 
+
+./helloworld
+
+make -f makefile.gcc clean
+
 ```
 
 ## Resources

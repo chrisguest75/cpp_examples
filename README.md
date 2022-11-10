@@ -19,6 +19,7 @@ TODO:
 ```sh
 code --install-extension ms-vscode.cpptools
 code --install-extension ms-vscode.cpptools-extension-pack
+code --install-extension ms-vscode.makefile-tools
 ```
 
 ### MacOSX

@@ -1,18 +1,40 @@
-# Check http://releases.llvm.org/download.html#10.0.0 for the latest available binaries
-FROM ubuntu:18.04 AS builder
+FROM ubuntu:20.04 AS builder
 
-# Make sure the image is updated, install some prerequisites,
-# Download the latest version of Clang (official binary) for Ubuntu
-# Extract the archive and add Clang to the PATH
-RUN apt-get update && apt-get install -y \
-  xz-utils \
-  build-essential \
-  curl \
-  && rm -rf /var/lib/apt/lists/* \
-  && curl -SL https://github.com/llvm/llvm-project/releases/download/llvmorg-10.0.0/clang+llvm-10.0.0-x86_64-linux-gnu-ubuntu-18.04.tar.xz \
-  | tar -xJC . && \
-  mv clang+llvm-10.0.0-x86_64-linux-gnu-ubuntu-18.04 clang_10.0.0 && \
-  echo 'export PATH=/clang_10.0.0/bin:$PATH' >> ~/.bashrc && \
-  echo 'export LD_LIBRARY_PATH=/clang_10.0.0/lib:$LD_LIBRARY_PATH' >> ~/.bashrc
+ARG DEBIAN_FRONTEND=noninteractive
+RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
+
+RUN apt-get update && apt-get install zsh curl git nano locales -y 
+RUN locale-gen en_US.UTF-8  
+ENV LANG en_US.UTF-8  
+ENV LANGUAGE en_US:en  
+ENV LC_ALL en_US.UTF-8  
+
+WORKDIR /scratch
+
+RUN buildDeps="clang-format \
+              clang-tidy \
+              clang-tools \
+              clang \
+              clangd \
+              libc++-dev \
+              libc++1 \
+              libc++abi-dev \
+              libc++abi1 \
+              libclang-dev \
+              libclang1 \
+              liblldb-dev \
+              libllvm-ocaml-dev \
+              libomp-dev \
+              libomp5 \
+              lld \
+              lldb \
+              llvm-dev \
+              llvm-runtime \
+              llvm \
+              python3-clang \
+              make \
+              curl" && \
+        apt-get -yqq update && \
+        apt-get install -yq --no-install-recommends ${buildDeps}
 
 CMD [ "/bin/bash" ]

@@ -11,8 +11,8 @@ NOTES:
 
 TODO:
 
-* make clean
 * output directory
+* make clang work like gcc
 
 ## Build and Run
 
@@ -72,11 +72,10 @@ make -f makefile.gcc clean
 
 * C/C++ for Visual Studio Code [here](https://code.visualstudio.com/docs/languages/cpp)  
 * Creating A Basic Make File for Compiling C Code [here](https://www.codeproject.com/Articles/794764/Creating-A-Basic-Make-File-for-Compiling-C-Code)  
+* Clang 10 in a Docker container for C++17 and C++20 development [here](https://solarianprogrammer.com/2017/12/14/clang-in-docker-container-cpp-17-development/)
+* LLVM Debian/Ubuntu nightly packages [here](https://apt.llvm.org/)
+* 6.14 Other Special Variables [here](https://www.gnu.org/software/make/manual/html_node/Special-Variables.html#Special-Variables)
+* Getting make to create object files in a specific directory [here](https://stackoverflow.com/questions/14639794/getting-make-to-create-object-files-in-a-specific-directory)
 
-https://solarianprogrammer.com/2017/12/14/clang-in-docker-container-cpp-17-development/
+https://lldb.llvm.org/use/remote.html
 
-https://github.com/llvm/llvm-project/releases/tag/llvmorg-15.0.2
-
-https://www.gnu.org/software/make/manual/html_node/Special-Variables.html#Special-Variables
-
-https://stackoverflow.com/questions/14639794/getting-make-to-create-object-files-in-a-specific-directory

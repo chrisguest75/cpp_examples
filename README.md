@@ -64,6 +64,12 @@ Steps [README.md](./03_googletest_unittesting/README.md)
 Building SC68 tools inside a docker container.  
 Steps [README.md](./08_sc68/README.md)  
 
+## 09 - devcontainer
+
+Demonstrate a simple cpp container with `cmake`.  
+Steps [README.md](./09_devcontainer/README.md)  
+
+
 ## Resources
 
 * C++ reference [here](https://en.cppreference.com/w/)

@@ -69,6 +69,10 @@ Steps [README.md](./08_sc68/README.md)
 Demonstrate a simple cpp container with `cmake`.  
 Steps [README.md](./09_devcontainer/README.md)  
 
+## 10 - conan
+
+Demonstrate a quick example using `conan` package manager.  
+Steps [README.md](./10_conan/README.md)  
 
 ## Resources
 

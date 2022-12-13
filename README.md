@@ -42,7 +42,12 @@ ls /usr/local/include
 ## 01 - Simple Hello World
 
 Demonstrates how to build and single step debug a CPP program  
-Steps [README.md](./01_helloworld/README.md)  
+Steps [README.md](./01_helloworld_make/README.md)  
+
+## 01 - Simple Hello World (using cmake)
+
+Demonstrates how to build and single step debug a CPP program using `cmake`  
+Steps [README.md](./01_helloworld_cmake/README.md)  
 
 ## 02 - Queue
 
@@ -53,6 +58,11 @@ Steps [README.md](./02_queue/README.md)
 
 Demonstrates how to use `googletest`  
 Steps [README.md](./03_googletest_unittesting/README.md)  
+
+## 08 - SC68
+
+Building SC68 tools inside a docker container.  
+Steps [README.md](./08_sc68/README.md)  
 
 ## Resources
 

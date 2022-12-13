@@ -1,0 +1,43 @@
+# syntax=docker/dockerfile:1.4
+FROM ubuntu:20.04 AS prebuild
+
+ARG DEBIAN_FRONTEND=noninteractive
+RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
+
+RUN apt-get update && apt-get install zsh curl git nano locales -y 
+RUN locale-gen en_US.UTF-8  
+ENV LANG en_US.UTF-8  
+ENV LANGUAGE en_US:en  
+ENV LC_ALL en_US.UTF-8  
+
+WORKDIR /scratch
+
+#lib32readline-dev
+ADD ./sc68-2.2.1.tar.gz ./
+RUN buildDeps="autoconf \
+                automake \
+                cmake \
+                curl \
+                bzip2 \
+                libexpat1-dev \
+                g++ \
+                gcc \
+                git \
+                gperf \
+                libtool \
+                make \
+                meson \
+                nasm \
+                perl \
+                pkg-config \
+                python \
+                libssl-dev \
+                yasm \
+                zlib1g-dev" && \
+        apt-get -yqq update && \
+        apt-get install -yq --no-install-recommends ${buildDeps}
+
+WORKDIR sc68-2.2.1
+FROM prebuild AS builder
+RUN HAVE_READLINE_READLINE_H=0 HAVE_READLINE_HISTORY_H=0 ./configure --prefix=/scratch/out --with-pic --enable-static --disable-shared 
+RUN make -s && make install

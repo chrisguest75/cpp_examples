@@ -15,7 +15,7 @@ code --install-extension 13xforever.language-x86-64-assembly
 ## Build
 
 ```sh
-nasm -f macho hello.asm
+nasm -f macho64 hello.asm
 ld -e _start -o hello hello.o
 ```
 
@@ -35,22 +35,40 @@ docker run -v $(pwd):/scratch --rm -it nasm
 
 # switch into zsh
 zsh
+```
 
+### Stack based 
+
+```sh
 # stack based
-nasm -f elf hello.asm
-ld -m elf_i386 hello.o -o out
-./out
+mkdir -p ./build/hello
+# build
+nasm -f elf -o ./build/hello/hello.o hello.asm
+# link
+ld -m elf_i386 ./build/hello/hello.o -o ./build/hello/hello
+# run
+./build/hello/hello
+```
 
+### Register based 
+
+```sh
 # register based
-nasm -f elf main.asm
-ld -m elf_i386 main.o -o main.exe
-./main.exe
+mkdir -p ./build/main
+# based
+nasm -f elf -o ./build/main/main.o main.asm
+# link
+ld -m elf_i386 ./build/main/main.o -o ./build/main/main
+# run
+./build/main/main
 ```
 
 ## Resources
 
+* netwide-assembler/nasm repo [here](https://github.com/netwide-assembler/nasm)  
+* NASM - The Netwide Assembler repo [here](https://www.nasm.us/xdoc/2.15.05/html/nasmdoc0.html)  
+
 http://salahuddin66.blogspot.com/2009/08/nasm-in-mac-os-x.html
 https://orangejuiceliberationfront.com/intel-assembler-on-mac-os-x/
-https://github.com/netwide-assembler/nasm
 
 https://github.com/djmgit/asmenv/blob/master/bin/build_and_run.sh

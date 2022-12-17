@@ -12,17 +12,20 @@ brew install nasm
 code --install-extension 13xforever.language-x86-64-assembly
 ```
 
-## Build
+## Build (macos)
 
 ```sh
-nasm -f macho64 hello.asm
-ld -e _start -o hello hello.o
+mkdir -p ./build/mac
+
+# build
+nasm -f macho64 -o ./build/mac/main.o macmain.asm
+
+# link
+ld -e start -static -o ./build/mac/main ./build/mac/main.o
+
+# run
+./build/mac/main 
 ```
-
-
-It's not linking on macosx
-https://stackoverflow.com/questions/52830484/nasm-cant-link-object-file-with-ld-on-macos-mojave
-
 
 ## Docker Playground
 
@@ -44,8 +47,10 @@ zsh
 mkdir -p ./build/hello
 # build
 nasm -f elf -o ./build/hello/hello.o hello.asm
+
 # link
 ld -m elf_i386 ./build/hello/hello.o -o ./build/hello/hello
+
 # run
 ./build/hello/hello
 ```
@@ -55,10 +60,13 @@ ld -m elf_i386 ./build/hello/hello.o -o ./build/hello/hello
 ```sh
 # register based
 mkdir -p ./build/main
+
 # based
 nasm -f elf -o ./build/main/main.o main.asm
+
 # link
 ld -m elf_i386 ./build/main/main.o -o ./build/main/main
+
 # run
 ./build/main/main
 ```
@@ -67,8 +75,6 @@ ld -m elf_i386 ./build/main/main.o -o ./build/main/main
 
 * netwide-assembler/nasm repo [here](https://github.com/netwide-assembler/nasm)  
 * NASM - The Netwide Assembler repo [here](https://www.nasm.us/xdoc/2.15.05/html/nasmdoc0.html)  
-
-http://salahuddin66.blogspot.com/2009/08/nasm-in-mac-os-x.html
-https://orangejuiceliberationfront.com/intel-assembler-on-mac-os-x/
-
-https://github.com/djmgit/asmenv/blob/master/bin/build_and_run.sh
+* Intel assembler on Mac OS X [here](https://orangejuiceliberationfront.com/intel-assembler-on-mac-os-x/)
+* djmgit/asmenv [here](https://github.com/djmgit/asmenv/blob/master/bin/build_and_run.sh)
+* nasm - Can't link object file with ld on macOS Mojave [here](https://stackoverflow.com/questions/52830484/nasm-cant-link-object-file-with-ld-on-macos-mojave)

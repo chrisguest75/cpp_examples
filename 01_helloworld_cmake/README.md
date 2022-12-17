@@ -2,22 +2,27 @@
 
 Demonstrates how to build and single step debug a CPP program using `cmake`  
 
-`vscode` extensions [README.md](../README.md)  
+Ref: `vscode` extensions [README.md](../README.md)  
+
+## Install cmake
+
+```sh
+brew install cmake
+```
 
 ## Build and Run
 
 Select the Terminal > Run Build Task command.
 
 ```sh
-brew install cmake
-
 # make from terminal
-
-mkdir -p build
-cd build
+mkdir -p build && cd $_
+# configure
 cmake ..
-
-cmake --build .           
+# build
+cmake --build .
+# run
+../build/helloworld
 ```
 
 ## Debugging

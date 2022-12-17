@@ -81,22 +81,6 @@ cmake --build .
 ./helloworld
 ```
 
-
-### Stack based 
-
-```sh
-# stack based
-mkdir -p ./build/hello
-# build
-nasm -f elf -o ./build/hello/hello.o hello.asm
-
-# link
-ld -m elf_i386 ./build/hello/hello.o -o ./build/hello/hello
-
-# run
-./build/hello/hello
-```
-
 ## Resources
 
 * netwide-assembler/nasm repo [here](https://github.com/netwide-assembler/nasm)  
@@ -106,8 +90,6 @@ ld -m elf_i386 ./build/hello/hello.o -o ./build/hello/hello
 * nasm - Can't link object file with ld on macOS Mojave [here](https://stackoverflow.com/questions/52830484/nasm-cant-link-object-file-with-ld-on-macos-mojave)
 * Ybalrid/cmake-cpp-nasm repo [here](https://github.com/Ybalrid/cmake-cpp-nasm)  
 * Mac OS X 64 bit Assembly System Calls [here](http://dustin.schultz.io/mac-os-x-64-bit-assembly-system-calls.html)  
+* BSD syscalls [here](https://opensource.apple.com/source/xnu/xnu-1504.3.12/bsd/kern/syscalls.master)
+* 0x02000000 [here](https://opensource.apple.com/source/xnu/xnu-792.13.8/osfmk/mach/i386/syscall_sw.h)
 
-
-
-
-https://opensource.apple.com/source/xnu/xnu-792.13.8/osfmk/mach/i386/syscall_sw.h

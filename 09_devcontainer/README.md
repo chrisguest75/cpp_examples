@@ -15,15 +15,15 @@ npm install -g @vscode/dev-container-cli
 ```
 
 ```sh
-devcontainer up --remove-existing-container --build-no-cache --config $(pwd)/.devcontainer/06_cpp/devcontainer.json
+devcontainer up --remove-existing-container --build-no-cache --config $(pwd)/.devcontainer/09_devcontainer/devcontainer.json
 ```
 
 Use `⌘ + ^ + p` and "Dev Containers: Attach to a running container"
 
-Add `/workspaces/devcontainer_examples` as a workspace to the new vscode editor.  
+Add `/workspaces/cpp_examples` as a workspace to the new vscode editor.  
 
 ```sh
-cd /workspaces/devcontainer_examples
+cd /workspaces/cpp_examples
 ```
 
 ## Run

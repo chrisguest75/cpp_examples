@@ -59,6 +59,16 @@ Steps [README.md](./02_queue/README.md)
 Demonstrates how to use `googletest`  
 Steps [README.md](./03_googletest_unittesting/README.md)  
 
+## 06 - NASM Library
+
+Demonstrates how to link an ASM lib with CPP  
+Steps [README.md](./06_nasm_lib/README.md)  
+
+## 07 - Disassemble
+
+Demonstrates how to use `ghidra` to dissassmble code  
+Steps [README.md](./07_disassemble/README.md)  
+
 ## 08 - SC68
 
 Building SC68 tools inside a docker container.  
@@ -69,6 +79,10 @@ Steps [README.md](./08_sc68/README.md)
 Demonstrate a simple cpp container with `cmake`.  
 Steps [README.md](./09_devcontainer/README.md)  
 
+## 10 - conan
+
+Demonstrate a quick example using `conan` package manager.  
+Steps [README.md](./10_conan/README.md)  
 
 ## Resources
 

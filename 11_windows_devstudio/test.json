@@ -1,0 +1,8 @@
+{
+    "my_string": "hello",
+    "my_number": 1,
+    "my_date": "2022-12-25T20:10:00",
+    "my_array": [
+        1,2,3,4,5
+    ]
+}

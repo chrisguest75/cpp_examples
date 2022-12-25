@@ -2,10 +2,19 @@
 //
 
 #include <iostream>
+#include <fstream>
+#include <nlohmann/json.hpp>
+using json = nlohmann::json;
+
 
 int main()
 {
     std::cout << "Hello World!\n";
+
+    std::ifstream f("test.json");
+    json data = json::parse(f);
+    std::cout << data["my_string"] << std::endl;
+
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

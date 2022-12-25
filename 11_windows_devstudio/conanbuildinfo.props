@@ -4,6 +4,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Label="Conan-RootDirs">
     <Conan-nlohmann_json-Root>$(USERPROFILE)\.conan\data\nlohmann_json\3.11.2\_\_\package\5ab84d6acfe1f23c4fae0ab88f26e3a396351ac9</Conan-nlohmann_json-Root>
+    <Conan-args-parser-Root>$(USERPROFILE)\.conan\data\args-parser\6.3.2\_\_\package\5ab84d6acfe1f23c4fae0ab88f26e3a396351ac9</Conan-args-parser-Root>
   </PropertyGroup>
   <PropertyGroup Label="ConanVariables">
     <ConanPackageName></ConanPackageName>
@@ -11,7 +12,7 @@
     <ConanCompilerFlags></ConanCompilerFlags>
     <ConanLinkerFlags></ConanLinkerFlags>
     <ConanPreprocessorDefinitions></ConanPreprocessorDefinitions>
-    <ConanIncludeDirectories>$(USERPROFILE)\.conan\data\nlohmann_json\3.11.2\_\_\package\5ab84d6acfe1f23c4fae0ab88f26e3a396351ac9\include;</ConanIncludeDirectories>
+    <ConanIncludeDirectories>$(USERPROFILE)\.conan\data\nlohmann_json\3.11.2\_\_\package\5ab84d6acfe1f23c4fae0ab88f26e3a396351ac9\include;$(USERPROFILE)\.conan\data\args-parser\6.3.2\_\_\package\5ab84d6acfe1f23c4fae0ab88f26e3a396351ac9\include;$(USERPROFILE)\.conan\data\args-parser\6.3.2\_\_\package\5ab84d6acfe1f23c4fae0ab88f26e3a396351ac9\include\args-parser;</ConanIncludeDirectories>
     <ConanResourceDirectories></ConanResourceDirectories>
     <ConanLibraryDirectories></ConanLibraryDirectories>
     <ConanBinaryDirectories></ConanBinaryDirectories>

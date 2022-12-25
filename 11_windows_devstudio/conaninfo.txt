@@ -7,6 +7,7 @@
     os=Windows
 
 [requires]
+    args-parser/6.Y.Z
     nlohmann_json/3.Y.Z
 
 [options]
@@ -23,6 +24,7 @@
     os_build=Windows
 
 [full_requires]
+    args-parser/6.3.2:5ab84d6acfe1f23c4fae0ab88f26e3a396351ac9
     nlohmann_json/3.11.2:5ab84d6acfe1f23c4fae0ab88f26e3a396351ac9
 
 [full_options]

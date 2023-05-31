@@ -15,14 +15,14 @@ brew install cmake
 Select the Terminal > Run Build Task command.
 
 ```sh
-# make from terminal
-mkdir -p build && cd $_
-# configure
-cmake ..
-# build
-cmake --build .
-# run
-../build/helloworld
+# create make
+cmake -S . -B ./build
+# build target
+cmake --build ./build
+# run 
+./build/helloworld
+# cleanup
+cmake --build ./build --target clean
 ```
 
 ## Debugging

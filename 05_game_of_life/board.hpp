@@ -15,6 +15,7 @@ class Board {
 
         int getWidth();
         int getHeight();
+        int countNeighbors(int x, int y);
 
         std::vector<std::string> stateString(); 
         void setState(std::vector<std::string> rows); 

@@ -1,4 +1,5 @@
 #include <sstream>
+#include <iostream>
 
 #include "board.hpp"
 
@@ -43,7 +44,31 @@ std::vector<std::string> Board::stateString() {
     return rows;
 }
 
+int Board::countNeighbors(int x, int y) {
+    int count = 0;
+
+    // wrap over the board 
+    int i = -1 + this->height;
+
+    count += this->board[(((y + i) % this->height) * this->width) + ((x - 1 + this->width) % this->width)];
+    count += this->board[(((y + i) % this->height) * this->width) + ((x     + this->width) % this->width)];
+    count += this->board[(((y + i) % this->height) * this->width) + ((x + 1 + this->width) % this->width)];
+
+    i = 0 + this->height;
+    count += this->board[(((y + i) % this->height) * this->width) + ((x - 1 + this->width) % this->width)];
+    //count += this->board[(((y + i) % this->height) * this->width) + ((x    ) % this->width)];
+    count += this->board[(((y + i) % this->height) * this->width) + ((x + 1 + this->width) % this->width)];
+
+    i = 1 + this->height;
+    count += this->board[(((y + i) % this->height) * this->width) + ((x - 1 + this->width) % this->width)];
+    count += this->board[(((y + i) % this->height) * this->width) + ((x     + this->width) % this->width)];
+    count += this->board[(((y + i) % this->height) * this->width) + ((x + 1 + this->width) % this->width)];
+
+    return count;
+}
+
 void Board::applyRules() {
     int *board = new int[height * width];
     
+
 }

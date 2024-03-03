@@ -7,7 +7,7 @@ TODO:
 * cppunit
 * stl
 * boost
-* lint
+* lint - clang tidy
 * webassembly
 * xcode
 * abseil

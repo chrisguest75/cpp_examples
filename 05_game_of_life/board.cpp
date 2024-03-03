@@ -70,5 +70,38 @@ int Board::countNeighbors(int x, int y) {
 void Board::applyRules() {
     int *board = new int[height * width];
     
+    for (int y = 0; y < this->height; y++) {
+        for (int x = 0; x < this->width; x++) {
+            int alive = this->board[(y * this->width) + x];
+            int count = this->countNeighbors(x, y);
 
+            board[(y * this->width) + x] = alive;
+
+            // rule 1
+            // Any live cell with fewer than two live neighbors dies, as if by underpopulation.
+            if (alive > 0 && count < 2) {
+                board[(y * this->width) + x] = 0;
+            }
+            // rule 2
+            // Any live cell with two or three live neighbors lives on to the next generation.
+            if (alive > 0 && count >= 2 && count <=3) {
+                board[(y * this->width) + x] = 1;
+            }
+            // rule 3
+            // Any live cell with more than three live neighbors dies, as if by overpopulation.
+            if (alive > 0 && count > 3) {
+                board[(y * this->width) + x] = 0;
+            }
+            // rule 4
+            // Any dead cell with exactly three live neighbors becomes a live cell, as if by reproduction.
+            if (alive == 0 && count == 3) {
+                board[(y * this->width) + x] = 1;
+            }
+
+        }
+    }
+
+    delete this->board;
+
+    this->board = board;
 }

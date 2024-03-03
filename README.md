@@ -7,12 +7,16 @@ TODO:
 * cppunit
 * stl
 * boost
-* lint
+* lint - clang tidy
 * webassembly
 * xcode
 * abseil
 * a docker image to build code for different platforms and cpu arch (added a pr to docker images.)
 * ldconfig? ldd? static linking?
+* doxygen
+* dockerise builds
+* memoryprofiler
+* github actions
 
 ## VSCode Extensions
 
@@ -59,6 +63,11 @@ Steps [README.md](./02_queue/README.md)
 Demonstrates how to use `googletest`  
 Steps [README.md](./03_googletest_unittesting/README.md)  
 
+## 05 - Game of life
+
+Create a game-of-life example.  
+Steps [README.md](./05_game_of_life/README.md)  
+
 ## 06 - NASM Library
 
 Demonstrates how to link an ASM lib with CPP  
@@ -84,6 +93,7 @@ Steps [README.md](./09_devcontainer/README.md)
 Demonstrate a quick example using `conan` package manager.  
 Steps [README.md](./10_conan/README.md)  
 
+
 ## Resources
 
 * C++ reference [here](https://en.cppreference.com/w/)
@@ -94,3 +104,6 @@ Steps [README.md](./10_conan/README.md)
 * Martchus/cpp-utilities [here](https://github.com/Martchus/cpp-utilities)
 * stefanpantic/cpp-playground [here](https://github.com/stefanpantic/cpp-playground)
 * https://github.com/stefanpantic/cpp-playground/tree/master/container-classes/Vector
+
+* https://github.com/Martchus/cpp-utilities
+* https://github.com/fffaraz/awesome-cpp

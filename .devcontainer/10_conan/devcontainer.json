@@ -1,5 +1,5 @@
 {
-	"name": "C++",
+	"name": "10_conan",
 	"build": {
 		"dockerfile": "../../10_conan/.devcontainer/Dockerfile",
 		"context": "../../10_conan/.devcontainer",
@@ -13,12 +13,23 @@
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
 
-	// Comment out to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
+	"containerUser": "vscode",
 	"remoteUser": "vscode",
 	"features": {
-		"git": "latest",
-		"github-cli": "latest",
-		"homebrew": "latest"
+	  "ghcr.io/devcontainers/features/common-utils:2": {
+		"configureZshAsDefaultShell": true,
+		"installZsh": true,
+		"installOhMyZsh": true,
+		"username": "vscode"
+	  },
+	  "ghcr.io/devcontainers/features/github-cli:1": {},
+	  "ghcr.io/devcontainers/features/git:1": {
+		"version": "latest"
+	  },
+	  "ghcr.io/meaningful-ooo/devcontainer-features/homebrew:2": {
+		"version": "latest",
+		"shallowClone": true
+	  }
 	},
 	// Configure tool-specific properties.
 	"customizations": {		
@@ -32,20 +43,20 @@
 				"timonwong.shellcheck",
 				"DavidAnson.vscode-markdownlint"
 			]
+		},
+		"settings": { 
+			"terminal.integrated.profiles.linux": {
+				"My Zsh": {
+				  "path": "/bin/zsh"
+				}
+			  },
+			  "terminal.integrated.defaultProfile.linux": "My Zsh"		
 		}
 	},
 	"containerEnv": { 
 		"MY_TEST_SECRET": "${localEnv:TEST_SECRET}", 
 		"MY_VARIABLE": "${localEnv:MY_VARIABLE}", 
 		"DEVCONTAINER_TYPE": "10_conan" 
-	},
-	"settings": { 
-		"terminal.integrated.profiles.linux": {
-			"My Zsh": {
-			  "path": "/bin/zsh"
-			}
-		  },
-		  "terminal.integrated.defaultProfile.linux": "My Zsh"		
 	}
 	// NOTE: THIS IS NOT WORKING 
 	// --mount-workspace-git-root false

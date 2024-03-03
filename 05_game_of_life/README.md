@@ -9,8 +9,44 @@ TODO:
 * Load files
 * Vistor pattern for grid
 * Versions of CPP
+* Nix flake does not work as I think the google test library is refering to /usr/bin/gmake
 
 ## Prereqs
+
+Install Nix using determinate systems installer.  
+
+REF: [github.com/chrisguest75/nix-examples/15_determinate_install/README.md](https://github.com/chrisguest75/nix-examples/blob/master/15_determinate_install/README.md)  
+
+```sh
+# check flakes are enabled
+cat /etc/nix/nix.conf 
+```
+
+## Development using nix
+
+Open a pure shell and install packages
+
+```sh
+nix flake show templates
+
+nix flake new pipenv_flake
+
+# enter folder 
+cd ./pipenv_flake
+
+nix build 
+
+nix flake metadata
+
+nix flake check
+
+nix develop --impure --command bash -c 'python --version'
+
+# enter the flake
+nix develop
+```
+
+### Non nix
 
 ```sh
 brew install cmake
@@ -33,7 +69,7 @@ cd ../..
 nm --extern-only --demangle ./googletest/install/lib/libgtest.a
 
 # build and run the tests
-make && ./gameoflife tests
+make && ./gameoflife test
 # run program
 make && ./gameoflife
 
@@ -51,3 +87,6 @@ Use the debugger in `vscode`
 * Google Test [repo](https://github.com/google/googletest)  
 
 https://riptutorial.com/cplusplus/example/1678/iterating-over-std--vector
+
+* Search more than 80 000 packages [here](https://search.nixos.org/)
+* Nixhub - Search over 400,000 granular versions of nix packages [here](https://www.nixhub.io/)  

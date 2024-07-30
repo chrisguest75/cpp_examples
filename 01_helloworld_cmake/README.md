@@ -15,12 +15,9 @@ brew install cmake
 NOTE: At time of writing gcc14 is actually gcc13
 
 ```sh
-nix-env -f. -iA tools -vvv
-
-nix-shell -p gcc14 -p cmake -p just
-gcc --version
-cmake --version
-just --version
+cd ./01_helloworld_cmake
+nix-build
+nix-shell 
 ```
 
 ## Build and Run

@@ -10,6 +10,15 @@ Demonstrates how to use `googletest`
 brew install cmake
 ```
 
+NOTE: At time of writing gcc14 is actually gcc13
+
+```sh
+nix-env -f. -iA tools -vvv
+
+nix-shell -p gcc14 -p cmake
+gcc --version
+```
+
 ## Build and Run
 
 ```sh
@@ -34,4 +43,4 @@ make && ./sumProgram
 
 * Getting Started with Google Test on macOS [here](https://alexanderbussan.medium.com/getting-started-with-google-test-on-os-x-a07eee7ae6dc)
 * Google Test [repo](https://github.com/google/googletest)
-
+* Search more than 100 000 packages [here](https://search.nixos.org/packages?channel=24.05)

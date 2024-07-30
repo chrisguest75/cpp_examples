@@ -41,7 +41,13 @@
 				"ms-vsliveshare.vsliveshare",
 				"oderwat.indent-rainbow",
 				"timonwong.shellcheck",
-				"DavidAnson.vscode-markdownlint"
+				"DavidAnson.vscode-markdownlint",
+				"ms-vscode.cpptools",
+				"ms-vscode.cpptools-extension-pack",
+				"ms-vscode.cpptools-themes",
+				"twxs.cmake",
+				"josetr.cmake-language-support-vscode",
+				"ms-vscode.cmake-tools"				
 			]
 		},
 		"settings": { 

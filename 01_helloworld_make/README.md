@@ -4,7 +4,7 @@ Demonstrates how to build and single step debug a CPP program
 
 `vscode` extensions [README.md](../README.md)  
 
-NOTES: 
+NOTES:
 
 * makefiles need to use tabs by default.
 * This supports `gcc` and `clang` builds.
@@ -76,6 +76,5 @@ make -f makefile.gcc clean
 * LLVM Debian/Ubuntu nightly packages [here](https://apt.llvm.org/)
 * 6.14 Other Special Variables [here](https://www.gnu.org/software/make/manual/html_node/Special-Variables.html#Special-Variables)
 * Getting make to create object files in a specific directory [here](https://stackoverflow.com/questions/14639794/getting-make-to-create-object-files-in-a-specific-directory)
-
-https://lldb.llvm.org/use/remote.html
+* Remote Debugging [here](https://lldb.llvm.org/use/remote.html)
 

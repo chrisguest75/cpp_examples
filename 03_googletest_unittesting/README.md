@@ -10,6 +10,8 @@ Demonstrates how to use `googletest`
 brew install cmake
 ```
 
+## NixEnv
+
 NOTE: At time of writing gcc14 is actually gcc13
 
 ```sh

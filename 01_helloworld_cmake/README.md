@@ -10,19 +10,35 @@ Ref: `vscode` extensions [README.md](../README.md)
 brew install cmake
 ```
 
+## NixEnv
+
+NOTE: At time of writing gcc14 is actually gcc13
+
+```sh
+nix-env -f. -iA tools -vvv
+
+nix-shell -p gcc14 -p cmake -p just
+gcc --version
+cmake --version
+just --version
+```
+
 ## Build and Run
 
 Select the Terminal > Run Build Task command.
 
 ```sh
 # create make
-cmake -S . -B ./build
+just create
+
 # build target
-cmake --build ./build
+just build
+
 # run 
-./build/helloworld
+just run
+
 # cleanup
-cmake --build ./build --target clean
+just clean
 ```
 
 ## Debugging

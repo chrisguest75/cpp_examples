@@ -45,7 +45,8 @@
 				"ms-vscode.cpptools-themes",
 				"twxs.cmake",
 				"josetr.cmake-language-support-vscode",
-				"ms-vscode.cmake-tools"	
+				"ms-vscode.cmake-tools",
+        "nefrob.vscode-just-syntax"
       ]
     },
     "settings": {

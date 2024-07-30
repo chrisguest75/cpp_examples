@@ -10,6 +10,9 @@ default:
 
 create:
   # create make
+  conan profile detect
+  conan profile list
+  conan profile show 
   cmake -S . -B ./build
 
 build:

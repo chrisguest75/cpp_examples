@@ -4,6 +4,15 @@ Demonstrates how to build and single step debug a CPP program using `cmake`
 
 Ref: `vscode` extensions [README.md](../README.md)  
 
+TODO:
+
+* Look at 10_conan
+* Get boost program options linking.
+        mkdir -p build
+        cd build
+        conan install .. 
+
+
 ## Install cmake
 
 ```sh
@@ -46,3 +55,6 @@ Use the debugger in `vscode`
 
 * Drop Autotools for CMake [here](https://opensource.com/article/21/5/cmake)  
 * C/C++ for Visual Studio Code [here](https://code.visualstudio.com/docs/languages/cpp)  
+* https://docs.conan.io/2/tutorial/consuming_packages.html
+* https://www.boost.org/users/history/version_1_85_0.html
+* Search more than 100 000 packages [here](https://search.nixos.org/packages?channel=24.05)

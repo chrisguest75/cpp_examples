@@ -1,0 +1,14 @@
+[requires]
+boost/1.85.0
+
+[generators]
+cmake
+
+[options]
+boost/1.85.0:without_python=True
+boost/1.85.0:shared=False
+boost/1.85.0:header_only=False
+
+[imports]
+bin, *.dll -> ./bin # Copies all dll files from packages bin folder to my "bin" folder
+lib, *.dylib* -> ./bin # Copies all dylib files from packages lib folder to my "bin" folder

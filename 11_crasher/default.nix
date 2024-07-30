@@ -20,6 +20,7 @@ pkgs.mkShell {
     gcc --version
     cmake --version
     just --version
+    conan --version
 
     echo "Use 'just create'"
   '';

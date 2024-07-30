@@ -31,10 +31,9 @@ Steps:
 
 * Create a project in this folder.
 * Import the `helloworld` tool.  
-* Analyse.   
+* Analyse.
 
 NOTE: You may have to allow security and privacy for the decompiler and demnagler.  
-
 
 ## Resources
 

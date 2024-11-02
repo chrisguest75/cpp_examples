@@ -80,10 +80,29 @@ docker run --rm -it sc68
 # share in files
 docker run --rm -it --volume $(pwd)/music:/music sc68
 
-/scratch/out/bin/info68 /music/source/Arcade_Classix_Hiscore.sndh -# , -n , -a , -c , -T , -Y , -H
-/scratch/out/bin/sc68 /music/source/Arcade_Classix_Hiscore.sndh > /music/out/Arcade_Classix_Hiscore.pcm
+export MUSIC_FILENAME=Arcade_Classix_Hiscore
+export MUSIC_FILENAME=AJH_99
 
-ffplay -ac 2 -f s16le -ar 44100 ./music/out/Arcade_Classix_Hiscore.pcm
+/scratch/out/bin/info68 /music/source/${MUSIC_FILENAME}.sndh -# , -n , -a , -c , -T , -Y , -H
+/scratch/out/bin/sc68 /music/source/${MUSIC_FILENAME}.sndh > /music/out/${MUSIC_FILENAME}.pcm
+
+# if playing mono it will not sound right
+ffplay -ac 2 -f s16le -ar 44100 ./music/out/${MUSIC_FILENAME}.pcm
+
+# render mp3
+ffmpeg  -ac 2 -f s16le -ar 44100 -i ./music/out/${MUSIC_FILENAME}.pcm  -ac 1 ./music/out/${MUSIC_FILENAME}.mp3
+vlc ./music/out/${MUSIC_FILENAME}.mp3
+```
+
+## Corrscope
+
+```sh
+# master
+ffmpeg -i ./music/out/${MUSIC_FILENAME}.mp3 ./music/out/${MUSIC_FILENAME}.wav
+# left
+ffmpeg -i ./music/out/${MUSIC_FILENAME}.mp3 -af "pan=mono|c0=FL" ./music/out/${MUSIC_FILENAME}_L.wav
+# right
+ffmpeg -i ./music/out/${MUSIC_FILENAME}.mp3 -af "pan=mono|c0=FR" ./music/out/${MUSIC_FILENAME}_R.wav
 ```
 
 ## Resources

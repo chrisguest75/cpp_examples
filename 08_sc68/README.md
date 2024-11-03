@@ -100,9 +100,12 @@ vlc ./music/out/${MUSIC_FILENAME}.mp3
 # master
 ffmpeg -i ./music/out/${MUSIC_FILENAME}.mp3 ./music/out/${MUSIC_FILENAME}.wav
 # left
-ffmpeg -i ./music/out/${MUSIC_FILENAME}.mp3 -af "pan=mono|c0=FL" ./music/out/${MUSIC_FILENAME}_L.wav
+ffmpeg -i ./music/out/${MUSIC_FILENAME}.mp3 -af "pan=mono|c0=c0" ./music/out/${MUSIC_FILENAME}_L.wav
 # right
-ffmpeg -i ./music/out/${MUSIC_FILENAME}.mp3 -af "pan=mono|c0=FR" ./music/out/${MUSIC_FILENAME}_R.wav
+ffmpeg -i ./music/out/${MUSIC_FILENAME}.mp3 -af "pan=mono|c0=c1" ./music/out/${MUSIC_FILENAME}_R.wav
+
+vlc ./music/out/${MUSIC_FILENAME}_L.wav
+vlc ./music/out/${MUSIC_FILENAME}_R.wav
 ```
 
 ## Resources

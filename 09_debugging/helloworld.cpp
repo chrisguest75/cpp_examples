@@ -10,7 +10,7 @@ int main()
 
     int number = 0;
     cin >> number;
-
+    
     cout << "You entered " << number << endl;
 }
 

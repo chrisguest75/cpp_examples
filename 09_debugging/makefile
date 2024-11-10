@@ -1,16 +1,22 @@
+.RECIPEPREFIX =  
 
+CC = g++
+OBJECT_DIR = obj
 CXXFLAGS = -O3 -ggdb -m64
 LDFLAGS  = -m64
 
-all: hello.exe
-.PRECIOUS: hello.exe hello.o
+all: helloworld
+
+.PRECIOUS: helloworld $(OBJECT_DIR)/helloworld.o
 .PHONY: all clean
 
-%.o: %.cc
-    $(CXX) -c $< -o $@ $(CXXFLAGS)
+$(OBJECT_DIR)/%.o: %.cpp
+	mkdir -p $(OBJECT_DIR)
+	$(CC) -c $< -o $@ $(CXXFLAGS)
 
-%.exe: %.o
-    $(CXX) $^ -o $@ $(LDFLAGS)
+helloworld: $(OBJECT_DIR)/helloworld.o
+	$(CC) $^ -o $@ $(LDFLAGS)
 
 clean:
-    rm -f hello.o hello.exe
+	rm -f $(OBJECT_DIR)/helloworld.o helloworld
+	rmdir $(OBJECT_DIR) 2>/dev/null || true

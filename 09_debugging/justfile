@@ -1,0 +1,26 @@
+#!/usr/bin/env just --justfile
+# ^ A shebang isn't required, but allows a justfile to be executed
+#   like a script, with `./justfile test`, for example.
+
+set dotenv-load := true
+
+# default lists actions
+default:
+  @just -f justfile --list
+
+clean:
+  #!/usr/bin/env bash
+  set -eufo pipefail
+  make clean
+
+
+build_docker:
+  #!/usr/bin/env bash
+  set -eufo pipefail
+  docker build -f Dockerfile.clang -t clangbuilder . 
+  
+start_docker: build_docker
+  #!/usr/bin/env bash
+  set -eufo pipefail  
+  docker run --rm -p 1234:1234 --name clangbuilder -it clangbuilder
+

@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "iostream": "cpp"
+    },
+    "cmake.sourceDirectory": "${workspaceFolder}/01_helloworld_cmake",
+    "cmake.configureOnOpen": false
+}

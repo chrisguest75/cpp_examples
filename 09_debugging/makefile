@@ -1,6 +1,6 @@
 .RECIPEPREFIX =  
 
-CC = g++
+CC = clang++
 OBJECT_DIR = obj
 CXXFLAGS = -O3 -ggdb -m64
 LDFLAGS  = -m64

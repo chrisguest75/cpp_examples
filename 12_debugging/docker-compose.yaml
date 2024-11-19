@@ -1,0 +1,19 @@
+services:
+    server:
+        build: 
+            context: .
+            dockerfile: Dockerfile.server        
+        networks:
+            - service_bridge
+
+    client:
+        build: 
+            context: .
+            dockerfile: Dockerfile.client        
+        networks:
+            - service_bridge
+
+networks:
+    service_bridge:
+        driver: bridge
+

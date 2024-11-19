@@ -5,13 +5,13 @@ Demonstrate how to debug in gdb/lldb
 TODO:
 
 * single step debugging in gdb.  
-* Can I do this across a process in a container?
-  * THIS IS NOT WORKING YET
+* How do I debug when cmd requires stdin?
 
 NOTES:
 
-* clang++ and gdb hase diferent tools
+* clang++ and gdb have diferent tools
 * You can debug from mac to linux.  
+* The debugger returns a random port to connect to - this means the debugger has to be on same network to work in docker.  
 
 ## Build
 
@@ -26,6 +26,9 @@ make
 
 ```sh
 lldb ./helloworld
+
+# run the executable
+> run
 ```
 
 ## Docker
@@ -75,6 +78,7 @@ platform connect connect://0.0.0.0:1234
 platform status
 
 # list files on remote machine 
+platform shell hostname
 platform shell ls -l 
 
 platform process list
@@ -82,13 +86,19 @@ platform process list
 platform process launch helloworld
 
 
+target create ./helloworld
+
 # disconnect
 platform disconnect
 ```
 
 ## Resources
 
-- https://www.vinnie.work/blog/2020-10-22-vscode-c-debug/
-- https://stackoverflow.com/questions/51433937/how-to-compile-debug-a-c-application-in-docker-with-visual-studio-code-on-wind
-- https://stackoverflow.com/questions/46001954/is-there-an-lldb-equivalent-to-gdbserver
-- https://lldb.llvm.org/use/remote.html
+- Remote Containerized Debugging with VSCode C/C++ [here](https://www.vinnie.work/blog/2020-10-22-vscode-c-debug/)
+- How to compile/debug a C++ application in Docker with Visual Studio Code on Windows [here](https://stackoverflow.com/questions/51433937/how-to-compile-debug-a-c-application-in-docker-with-visual-studio-code-on-wind)
+- Is there an lldb equivalent to gdbserver? [here](https://stackoverflow.com/questions/46001954/is-there-an-lldb-equivalent-to-gdbserver)
+- Remote Debugging [here](https://lldb.llvm.org/use/remote.html)
+- https://lldb.llvm.org/man/lldb-server.html
+- https://lldb.llvm.org/use/map.html
+- https://lldb.llvm.org/use/tutorial.html
+

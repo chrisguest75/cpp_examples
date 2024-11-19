@@ -33,6 +33,7 @@ RUN buildDeps="clang-format \
               llvm \
               python3-clang \
               make \
+              iproute2 \
               curl" && \
         apt-get -yqq update && \
         apt-get install -yq --no-install-recommends ${buildDeps}
@@ -43,9 +44,33 @@ COPY makefile /scratch
 #RUN make
 COPY --chmod=755 <<EOF /bin/debug.sh
 #!/usr/bin/env bash
+set +x
+
+echo "** IP **"
+ip addr
+
+echo "** BUILD **"
 make
+
+echo "** DEBUGGER **"
+echo "Starting server on '0.0.0.0:1234'"
+
+# LLDB
 lldb-server platform --listen "0.0.0.0:1234" --server --  ./helloworld
+#lldb-server platform --listen "0.0.0.0:1234" 
+
+# GDB
+#lldb-server gdbserver "0.0.0.0:1234" -- ./helloworld
+
 EOF
 
-CMD [ "/bin/debug.sh" ]
-#CMD [ "/bin/bash" ]
+COPY --chmod=755 <<EOF /bin/wait.sh
+#!/usr/bin/env bash
+set +x
+
+echo "Waiting"
+sleep infinity
+
+EOF
+
+CMD [ "/bin/wait.sh" ]

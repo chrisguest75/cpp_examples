@@ -6,6 +6,7 @@ TODO:
 
 * single step debugging in gdb.  
 * How do I debug when cmd requires stdin?
+* Get source debugging working
 
 NOTES:
 

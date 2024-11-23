@@ -109,6 +109,10 @@ lldb
 
 ##### Example Commands
 
+[github.com/reveng007/GDB-Cheat-Sheet](https://github.com/reveng007/GDB-Cheat-Sheet)  
+
+Connecting
+
 ```sh
 log enable gdb-remote packets"
 platform status
@@ -122,6 +126,12 @@ breakpoint set --file helloworld.cpp --line 16
 platform shell ls -l
 gui
 platform disconnect
+```
+
+Execution
+
+```sh
+bt - show stacktrace
 ```
 
 #### Cleanup

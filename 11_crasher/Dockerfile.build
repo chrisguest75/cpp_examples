@@ -3,7 +3,14 @@ FROM ubuntu:24.04 AS builder
 ARG DEBIAN_FRONTEND=noninteractive
 RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
 
-RUN apt-get update && apt-get install zsh curl git nano locales -y 
+RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
+    --mount=type=cache,target=/var/lib/apt,sharing=locked \
+    apt-get update && apt-get install lsb-release debian-goodies cpuinfo curl ca-certificates gpg ubuntu-dbgsym-keyring gdb zsh git nano locales -y 
+
+#RUN echo 'deb http://ddebs.ubuntu.com $(lsb_release -cs) main restricted universe multiverse' >> /etc/apt/sources.list.d/ddebs.list
+#RUN echo 'deb http://ddebs.ubuntu.com $(lsb_release -cs)-updates main restricted universe multiverse' >> /etc/apt/sources.list.d/ddebs.list
+#RUN echo 'deb http://ddebs.ubuntu.com $(lsb_release -cs)-proposed main restricted universe multiverse' >> /etc/apt/sources.list.d/ddebs.list
+
 RUN locale-gen en_US.UTF-8  
 ENV LANG=en_US.UTF-8  
 ENV LANGUAGE=en_US:en  
@@ -11,7 +18,9 @@ ENV LC_ALL=en_US.UTF-8
 
 WORKDIR /scratch
 
-RUN buildDeps="clang-format \
+RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
+    --mount=type=cache,target=/var/lib/apt,sharing=locked \
+    buildDeps="clang-format \
               clang-tidy \
               clang-tools \
               clang \
@@ -44,6 +53,9 @@ RUN buildDeps="clang-format \
         apt-get -yqq update && \
         apt-get install -yq --no-install-recommends ${buildDeps} && \
         pipx ensurepath
+
+ENV DEBUGINFOD_URLS="https://debuginfod.ubuntu.com"
+RUN set debuginfod enabled on
 
 RUN pipx install conan
 

@@ -63,9 +63,7 @@ void saveBufferToPng(const char* filename, const std::vector<unsigned char>& buf
 }
 
 
-vector<unsigned char> generateMandelbrot(int width, int height, int maxIterations) {
-std::vector<unsigned char> buffer(width * height * 3); // RGB buffer
-
+void generateMandelbrot(std::vector<unsigned char> &buffer, int width, int height, int maxIterations) {
     // Mandelbrot bounds
     double xmin = -2.5, xmax = 1.0;
     double ymin = -1.0, ymax = 1.0;
@@ -93,17 +91,9 @@ std::vector<unsigned char> buffer(width * height * 3); // RGB buffer
             buffer[index + 2] = color; // Blue
         }
     }
-
-    return buffer;
 }
 
-void generateRed(int b) {
-    cout << "generate(b:" << b << ")" << endl;
-        // Example: Create a red image (100x100)
-    int width = 100;
-    int height = 100;
-    std::vector<unsigned char> buffer(width * height * 3); // RGB image
-
+void generateRed(std::vector<unsigned char> &buffer, int width, int height) {
     // Fill the buffer with red color
     for (int y = 0; y < height; y++) {
         for (int x = 0; x < width; x++) {
@@ -113,9 +103,6 @@ void generateRed(int b) {
             buffer[index + 2] = 0;   // Blue
         }
     }
-
-    // Save to PNG
-    saveBufferToPng("output.png", buffer, width, height);
 }
 
 int main(const int argc, const char **argv)
@@ -142,16 +129,27 @@ int main(const int argc, const char **argv)
         int height = 1080;
         int maxIterations = 1000;
 
+        std::vector<unsigned char> buffer(width * height * 3); // RGB buffer
+
         // Generate Mandelbrot image
-        std::vector<unsigned char> buffer = generateMandelbrot(width, height, maxIterations);
+        generateMandelbrot(buffer, width, height, maxIterations);
 
         // Save to PNG
-        saveBufferToPng("mandelbrot.png", buffer, width, height);
+        saveBufferToPng("./out/mandelbrot.png", buffer, width, height);
         selected = true;
     }
 
     if (vm.count("red")) {
-        generateRed(0);
+        // Example: Create a red image (100x100)
+        int width = 100;
+        int height = 100;
+        std::vector<unsigned char> buffer(width * height * 3); // RGB image
+
+        generateRed(buffer, width, height);
+
+        // Save to PNG
+        saveBufferToPng("./out/output.png", buffer, width, height);
+
         selected = true;
     } 
 

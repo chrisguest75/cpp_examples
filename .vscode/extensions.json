@@ -6,6 +6,9 @@
         "twxs.cmake",
         "josetr.cmake-language-support-vscode",
         "ms-vscode.cmake-tools",
-        "nefrob.vscode-just-syntax"
+        "ms-vscode.makefile-tools",
+        "nefrob.vscode-just-syntax",
+        "vivaxy.vscode-conventional-commits"
     ]
 }
+

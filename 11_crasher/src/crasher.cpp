@@ -1,4 +1,6 @@
 #include <iostream>
+#include "boost/program_options.hpp"
+namespace po = boost::program_options;
 
 using namespace std;
 
@@ -13,12 +15,35 @@ void nullPointer(int *p) {
     p[0] = 10;
 }
 
-int main()
+int main(const int argc, const char **argv)
 {
-    cout << "Welcome to the crasher application" << endl;
-    cout << endl;
+    po::options_description desc("Allowed options");
+    desc.add_options()
+    ("help", "produce help message")
+    ("nullPointer", "Trigger nullPointer")
+    ("divideByZero", "Trigger divideByZero");
 
-    //divideByZero(0);
-    nullPointer(0);
+    po::variables_map vm;
+    po::store(po::parse_command_line(argc, argv, desc), vm);
+    po::notify(vm);  
+
+    if (vm.count("help")) {
+        cout << desc << "\n";
+        return 1;
+    }
+    
+    cout << "**********************************" << endl;
+    cout << "Welcome to the crasher application" << endl;
+    cout << "**********************************" << endl;
+
+    if (vm.count("nullPointer")) {
+        nullPointer(0);
+    } 
+
+    if (vm.count("divideByZero")) {
+        divideByZero(0);
+    } 
+
+    cout << desc << "\n";
 }
 

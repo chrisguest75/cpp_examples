@@ -28,3 +28,4 @@ Use the debugger in `vscode`
 
 * github.com/boostorg/boost repo [here](https://github.com/boostorg/boost)
 * Boost provides free peer-reviewed portable C++ source libraries. [here](https://www.boost.org/)
+* The Conan libraries and tools central repository [here](https://conan.io/center)

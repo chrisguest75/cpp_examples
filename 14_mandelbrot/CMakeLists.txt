@@ -4,9 +4,10 @@ project(mandelbrot VERSION 1.0)
 
 # ...
 find_package(Boost REQUIRED)
+find_package(PNG REQUIRED)
 
 add_executable(${PROJECT_NAME} src/mandelbrot.cpp)
 
 target_compile_options(${PROJECT_NAME} PRIVATE -Wdiv-by-zero -Wall -Wextra)
 
-target_link_libraries(${PROJECT_NAME} boost::boost)
+target_link_libraries(${PROJECT_NAME} boost::boost PNG::PNG)

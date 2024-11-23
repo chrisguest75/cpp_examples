@@ -1,5 +1,6 @@
 [requires]
 boost/1.85.0
+libpng/1.6.44
 
 [generators]
 CMakeDeps

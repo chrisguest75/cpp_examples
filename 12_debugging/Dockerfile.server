@@ -50,7 +50,7 @@ echo "** IP **"
 ip addr
 
 echo "** BUILD **"
-make
+make CC=clang++
 
 echo "** DEBUGGER **"
 echo "Starting server on '0.0.0.0:1234'"

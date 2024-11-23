@@ -13,27 +13,36 @@ clean:
   set -eufo pipefail
   make clean
 
+examples: 
+  #!/usr/bin/env bash
+  set -eufo pipefail
+  #!/usr/bin/env bash
+  echo "****"
+  echo "log enable gdb-remote packets"
+  echo "platform status"
+  echo "platform list"
+  echo "platform select remote-linux"
+  echo "platform connect connect://0.0.0.0:1234"
+  echo "platform connect connect://server:1234"
+  echo "platform process launch /scratch/helloworld"  
+  echo "target create /scratch/helloworld"
+  echo "breakpoint set --file helloworld.cpp --line 16"
+  echo "platform shell ls -l" 
+  echo "gui"
+  echo "platform disconnect"
+  echo "****"  
+
 start_compose:
   #!/usr/bin/env bash
-  docker compose up --build -d     
+  docker compose up --build --force-recreate -d     
   docker compose ps
 
 attach_server:
   #!/usr/bin/env bash
   docker compose exec -it server /bin/bash
 
-attach_client:
+attach_client: examples
   #!/usr/bin/env bash
-  echo "****"
-  echo "log enable gdb-remote packets"
-  echo "platform status"
-  echo "platform select remote-linux"
-  echo "platform connect connect://0.0.0.0:1234"
-  echo "platform process launch /scratch/helloworld"  
-  echo "target create /scratch/helloworld"
-  echo "breakpoint set --file helloworld.cpp --line 7"
-  echo "gui"
-  echo "****"  
   docker compose exec -it client /bin/bash
 
 stop_compose:
@@ -50,15 +59,5 @@ start_docker: build_docker
   set -eufo pipefail  
   docker run --rm -p 1234:1234 --name clangbuilder -it clangbuilder
 
-debug:
-  @echo "****"
-  @echo "log enable gdb-remote packets"
-  @echo "platform status"
-  @echo "platform select remote-linux"
-  @echo "platform connect connect://0.0.0.0:1234"
-  @echo "platform process launch /scratch/helloworld"  
-  @echo "target create /scratch/helloworld"
-  @echo "breakpoint set --file helloworld.cpp --line 7"
-  @echo "gui"
-  @echo "****"
+debug: examples
   lldb

@@ -4,6 +4,11 @@ Demonstrate loading writing out a PNG.
 
 Ref: `vscode` extensions [README.md](../README.md)  
 
+TODO:
+
+* Break functions into seperate files
+* Profile and optimise it.  
+
 ## Build and Run
 
 Select the Terminal > Run Build Task command.

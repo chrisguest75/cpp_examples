@@ -10,6 +10,32 @@ namespace po = boost::program_options;
 
 using namespace std;
 
+// Convert HSV to RGB
+void hsvToRgb(double h, double s, double v, unsigned char& r, unsigned char& g, unsigned char& b) {
+    double c = v * s;
+    double x = c * (1 - std::fabs(std::fmod(h / 60.0, 2) - 1));
+    double m = v - c;
+
+    double r_prime, g_prime, b_prime;
+    if (h >= 0 && h < 60) {
+        r_prime = c, g_prime = x, b_prime = 0;
+    } else if (h >= 60 && h < 120) {
+        r_prime = x, g_prime = c, b_prime = 0;
+    } else if (h >= 120 && h < 180) {
+        r_prime = 0, g_prime = c, b_prime = x;
+    } else if (h >= 180 && h < 240) {
+        r_prime = 0, g_prime = x, b_prime = c;
+    } else if (h >= 240 && h < 300) {
+        r_prime = x, g_prime = 0, b_prime = c;
+    } else {
+        r_prime = c, g_prime = 0, b_prime = x;
+    }
+
+    r = static_cast<unsigned char>((r_prime + m) * 255);
+    g = static_cast<unsigned char>((g_prime + m) * 255);
+    b = static_cast<unsigned char>((b_prime + m) * 255);
+}
+
 void saveBufferToPng(const char* filename, const std::vector<unsigned char>& buffer, int width, int height) {
     FILE* fp = fopen(filename, "wb");
     if (!fp) {
@@ -63,32 +89,36 @@ void saveBufferToPng(const char* filename, const std::vector<unsigned char>& buf
 }
 
 
-void generateMandelbrot(std::vector<unsigned char> &buffer, int width, int height, int maxIterations) {
-    // Mandelbrot bounds
-    double xmin = -2.5, xmax = 1.0;
-    double ymin = -1.0, ymax = 1.0;
-
+void generateMandelbrot(std::vector<unsigned char> &buffer, int width, int height, int maxIterations, double xmin = -2.5, double xmax = 1.0, double ymin = -1.0, double ymax = 1.0) {
     for (int y = 0; y < height; ++y) {
         for (int x = 0; x < width; ++x) {
-            // Map pixel to complex plane
             double cr = xmin + (xmax - xmin) * x / width;
             double ci = ymin + (ymax - ymin) * y / height;
 
-            // Perform Mandelbrot iteration
-            complex<double> c(cr, ci);
-            complex<double> z(0, 0);
+            std::complex<double> c(cr, ci);
+            std::complex<double> z(0, 0);
             int iterations = 0;
-            while (abs(z) <= 2.0 && iterations < maxIterations) {
+
+            while (std::abs(z) <= 2.0 && iterations < maxIterations) {
                 z = z * z + c;
                 iterations++;
             }
 
-            // Map iterations to RGB values
-            unsigned char color = (iterations == maxIterations) ? 0 : (255 * iterations / maxIterations);
+            // Smooth coloring formula for continuous gradient
+            double smoothIter = iterations - std::log2(std::log2(std::abs(z))) + 4.0;
+
+            // Map iterations to color
+            double hue = 360.0 * smoothIter / maxIterations; // Cycle hue
+            double saturation = 1.0;
+            double value = iterations < maxIterations ? 1.0 : 0.0; // Inside set is black
+
+            unsigned char r, g, b;
+            hsvToRgb(hue, saturation, value, r, g, b);
+
             int index = (y * width + x) * 3;
-            buffer[index] = color;     // Red
-            buffer[index + 1] = color; // Green
-            buffer[index + 2] = color; // Blue
+            buffer[index] = r;
+            buffer[index + 1] = g;
+            buffer[index + 2] = b;
         }
     }
 }
@@ -131,8 +161,11 @@ int main(const int argc, const char **argv)
 
         std::vector<unsigned char> buffer(width * height * 3); // RGB buffer
 
+        double xmin = -1.0, xmax = 0.2;
+        double ymin = -0.5, ymax = 0.5;
+
         // Generate Mandelbrot image
-        generateMandelbrot(buffer, width, height, maxIterations);
+        generateMandelbrot(buffer, width, height, maxIterations, xmin, xmax, ymin, ymax);
 
         // Save to PNG
         saveBufferToPng("./out/mandelbrot.png", buffer, width, height);

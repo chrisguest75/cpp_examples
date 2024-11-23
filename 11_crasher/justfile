@@ -15,12 +15,12 @@ create:
   conan profile detect
   conan profile list
   conan profile show 
+  conan install . --output-folder=build --build=missing
 
 build:
   #!/usr/bin/env bash
   set -eufo pipefail
   # build target
-  conan install . --output-folder=build --build=missing
   cd build
   cmake .. -DCMAKE_TOOLCHAIN_FILE=conan_toolchain.cmake -DCMAKE_BUILD_TYPE=Release
   cmake --build .
@@ -35,4 +35,17 @@ clean:
   # cleanup
   cmake --build ./build --target clean
 
+build_docker:
+  #!/usr/bin/env bash
+  set -eufo pipefail
+  docker build -f Dockerfile.build -t 11_crasher . 
+  
+start_docker: build_docker
+  #!/usr/bin/env bash
+  set -eufo pipefail  
+  docker run --rm --name 11_crasher -it 11_crasher
 
+shell_docker: build_docker
+  #!/usr/bin/env bash
+  set -eufo pipefail  
+  docker run --rm --name 11_crasher -it --entrypoint /bin/bash 11_crasher

@@ -1,0 +1,84 @@
+FROM ubuntu:24.04 AS builder
+
+ARG DEBIAN_FRONTEND=noninteractive
+RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
+
+RUN apt-get update && apt-get install zsh curl git nano locales -y 
+RUN locale-gen en_US.UTF-8  
+ENV LANG=en_US.UTF-8  
+ENV LANGUAGE=en_US:en  
+ENV LC_ALL=en_US.UTF-8  
+
+WORKDIR /scratch
+
+RUN buildDeps="clang-format \
+              clang-tidy \
+              clang-tools \
+              clang \
+              clangd \
+              libc++-dev \
+              libc++1 \
+              libc++abi-dev \
+              libc++abi1 \
+              libclang-dev \
+              libclang1 \
+              liblldb-dev \
+              libllvm-ocaml-dev \
+              libomp-dev \
+              libomp5 \
+              lld \
+              lldb \
+              llvm-dev \
+              llvm-runtime \
+              llvm \
+              just \
+              python3-clang \
+              python3-dev \
+              python3-full \
+              python3-pip \
+              pipx \ 
+              make \
+              cmake \
+              iproute2 \
+              curl" && \
+        apt-get -yqq update && \
+        apt-get install -yq --no-install-recommends ${buildDeps} && \
+        pipx ensurepath
+
+RUN pipx install conan
+
+COPY CMakeLists.txt /scratch
+COPY CMakeUserPresets.json /scratch
+COPY conanfile.txt /scratch
+COPY justfile /scratch
+
+ENV PATH=${PATH}:/root/.local/bin/conan:/root/.local/bin
+
+COPY --chmod=755 <<EOF /bin/prepare_libs.sh
+#!/usr/bin/env bash
+set +x
+echo "** CREATE **"
+just create
+EOF
+
+RUN /bin/prepare_libs.sh
+
+COPY ./src /scratch/src
+
+COPY --chmod=755 <<EOF /bin/build.sh
+#!/usr/bin/env bash
+set +x
+echo "** BUILD **"
+just build
+EOF
+
+RUN /bin/build.sh
+
+COPY --chmod=755 <<EOF /bin/run.sh
+#!/usr/bin/env bash
+set +x
+just run --nullPointer 
+just run --divideByZero 
+EOF
+
+CMD [ "/bin/run.sh" ]

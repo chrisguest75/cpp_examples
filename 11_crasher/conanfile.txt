@@ -2,7 +2,8 @@
 boost/1.85.0
 
 [generators]
-cmake
+CMakeDeps
+CMakeToolchain
 
 [options]
 boost/1.85.0:without_python=True

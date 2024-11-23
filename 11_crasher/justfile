@@ -9,17 +9,25 @@ default:
   @just -f justfile --list
 
 create:
+  #!/usr/bin/env bash
+  set -eufo pipefail
   # create make
   conan profile detect
   conan profile list
   conan profile show 
-  cmake -S . -B ./build
 
 build:
+  #!/usr/bin/env bash
+  set -eufo pipefail
   # build target
-  cmake --build ./build
+  conan install . --output-folder=build --build=missing
+  cd build
+  cmake .. -DCMAKE_TOOLCHAIN_FILE=conan_toolchain.cmake -DCMAKE_BUILD_TYPE=Release
+  cmake --build .
 
-run:
+run: build
+  #!/usr/bin/env bash
+  set -eufo pipefail
   # run 
   ./build/crasher
 

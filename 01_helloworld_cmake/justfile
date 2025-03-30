@@ -8,6 +8,12 @@ set dotenv-load := true
 default:
   @just -f justfile --list
 
+nix:
+  #!/usr/bin/env bash
+  set -eufo pipefail
+  nix-build
+  nix-shell 
+
 create:
   # create make
   cmake -S . -B ./build

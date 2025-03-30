@@ -65,7 +65,6 @@ make -f makefile.gcc
 ./helloworld
 
 make -f makefile.gcc clean
-
 ```
 
 ## Resources
